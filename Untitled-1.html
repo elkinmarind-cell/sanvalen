@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Quieres ser mi San Valentín?</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#ffe6f0;
+        font-family:Arial, Helvetica, sans-serif;
+        text-align:center;
+    }
+
+    .card{
+        background:white;
+        padding:40px;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        position:relative;
+    }
+
+    h1{
+        color:#ff4d6d;
+        margin-bottom:30px;
+    }
+
+    .buttons{
+        position:relative;
+        height:120px;
+    }
+
+    button{
+        border:none;
+        padding:15px 30px;
+        font-size:18px;
+        border-radius:10px;
+        cursor:pointer;
+        transition:all 0.2s ease;
+    }
+
+    #yes{
+        background:#28c76f;
+        color:white;
+        transform:scale(1);
+    }
+
+    #no{
+        background:#ff6b6b;
+        color:white;
+        position:absolute;
+        left:150px;
+    }
+
+    .message{
+        margin-top:25px;
+        font-size:22px;
+        color:#ff4d6d;
+        display:none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>¿Quieres ser mi San Valentín? 💖</h1>
+
+    <div class="buttons">
+        <button id="yes">Sí</button>
+        <button id="no">No</button>
+    </div>
+
+    <div class="message" id="msg">
+        ¡Sabía que dirías que sí! 💕
+    </div>
+</div>
+
+<script>
+let yesBtn = document.getElementById("yes");
+let noBtn = document.getElementById("no");
+let msg = document.getElementById("msg");
+
+let scale = 1;
+
+// Cuando intenta decir NO
+noBtn.addEventListener("mouseover", function(){
+
+    // mover el botón NO a una posición aleatoria
+    let x = Math.random() * 200 - 100;
+    let y = Math.random() * 100 - 50;
+
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+    // hacer crecer el botón SÍ
+    scale += 0.2;
+    yesBtn.style.transform = `scale(${scale})`;
+});
+
+// Cuando presiona SÍ
+yesBtn.addEventListener("click", function(){
+    msg.style.display = "block";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+});
+</script>
+
+</body>
+</html>
